@@ -10,12 +10,13 @@
         android:id="@+id/amsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="33dp"
         android:text="Name:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#006B87"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/darkBlueBarTop"
+        android:layout_toStartOf="@+id/amsReleaseAgreement" />
 
     <TextView
         android:id="@+id/amsEmail"
@@ -29,27 +30,16 @@
         android:layout_marginLeft="20dp" />
 
     <TextView
-        android:id="@+id/amsHeadline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/amsEmail"
-        android:layout_marginTop="21dp"
-        android:text="Headline:"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#006B87"
-        android:layout_marginLeft="20dp" />
-
-    <TextView
         android:id="@+id/amsDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/amsHeadline"
         android:layout_marginTop="21dp"
         android:text="Description:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#006B87"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/amsEmail" />
 
     <Button
         android:id="@+id/amsPhoto"
@@ -99,11 +89,10 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp" />
 
-    <EditText
+    EditText
         android:id="@+id/editEmail"
         android:layout_width="200sp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/amsHeadline"
         android:layout_alignParentEnd="true"
         android:layout_alignStart="@+id/editText"
         android:layout_marginRight="20dp" />
@@ -156,26 +145,6 @@
         android:textAlignment="center"
         android:layout_marginTop="2dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/topBluelBar"
-        android:layout_alignParentStart="true"
-        android:background="#6DCFF6"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:textSize="30dp"
-        android:textColor="#FFFFFF"
-        android:gravity="center"
-        android:typeface="monospace" />
-
-    <ImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/testimonialLogo"
-        android:background="@drawable/testimonial_logo"
         android:layout_alignTop="@+id/topBluelBar"
         android:layout_alignStart="@+id/topBluelBar"
         android:layout_marginLeft="5dp"
@@ -186,23 +155,24 @@
         android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/darkBlueBarTop"
-        android:layout_below="@+id/topBluelBar"
         android:layout_alignStart="@+id/topBluelBar"
         android:background="#006B87"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignBottom="@+id/amsvansLogo" />
 
     <ImageView
         android:id="@+id/amsvansLogo"
-        android:layout_below="@+id/topBluelBar"
-        android:layout_width="140dp"
-        android:layout_height="30dp"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
         android:background="@drawable/ams_white_transparent"
-        android:layout_marginTop="3dp"
-        android:layout_marginLeft="17dp" />
+        android:layout_marginLeft="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
-    <TextView
+    TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -214,7 +184,7 @@
         android:layout_marginTop="12dp"
         android:clickable="false" />
 
-    <TextView
+    TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
