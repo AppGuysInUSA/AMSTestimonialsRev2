@@ -3,40 +3,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#FFFFFF">
 
     <TextView
         android:id="@+id/amsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/amsEmail"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="150dp"
         android:text="Name:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#006B87"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/amsEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/amsDescription"
         android:layout_below="@+id/amsName"
         android:layout_marginTop="21dp"
         android:text="Email:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#006B87"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/amsHeadline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/amsEmail"
         android:layout_below="@+id/amsEmail"
         android:layout_marginTop="21dp"
         android:text="Headline:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#006B87"
+        android:layout_marginLeft="20dp" />
 
     <TextView
         android:id="@+id/amsDescription"
@@ -46,51 +47,166 @@
         android:layout_below="@+id/amsHeadline"
         android:layout_marginTop="21dp"
         android:text="Description:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#006B87"
+        android:layout_marginLeft="20dp" />
 
     <Button
         android:id="@+id/amsPhoto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:layout_above="@+id/amsReleaseAgreement"
-        android:layout_alignStart="@+id/amsHeadline"
         android:layout_marginBottom="19dp"
         android:onClick="launchCamera"
-        android:text="Take Photo" />
+        android:background="@drawable/photo"
+        android:layout_marginLeft="20dp" />
 
     <Button
         android:id="@+id/amsVideo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/videocam"
         android:layout_alignTop="@+id/amsPhoto"
-        android:layout_marginEnd="41dp"
-        android:text="Take Video" />
+        android:layout_centerHorizontal="true" />
 
     <CheckBox
         android:id="@+id/amsReleaseAgreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
         android:checked="false"
         android:text="*I agree to the Release Agreement"
-        android:textSize="10dp" />
+        android:textSize="12dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#006B87"
+        android:textStyle="normal" />
 
     <Button
         android:id="@+id/amsCompleted"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Testimonial Completed" />
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/testimonial"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="80dp"
+        android:layout_alignTop="@+id/amsVideo"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="200sp"
+        android:layout_width="230sp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/amsEmail"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="200sp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/amsHeadline"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/editText" />
+
+    <EditText
+        android:id="@+id/editHeadline"
+        android:layout_width="230sp"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/amsDescription"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="TAKE PHOTO"
+        android:id="@+id/textView"
+        android:layout_below="@+id/amsVideo"
+        android:layout_alignEnd="@+id/amsPhoto"
+        android:textColor="#A5C62F"
+        android:textStyle="bold"
+        android:textAlignment="gravity"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="TAKE VIDEO"
+        android:id="@+id/textView2"
+        android:layout_below="@+id/amsVideo"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textColor="#006B87"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="SUBMIT"
+        android:id="@+id/submitText"
+        android:textColor="#A5C62F"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_below="@+id/amsCompleted"
+        android:layout_alignEnd="@+id/amsCompleted"
+        android:layout_alignStart="@+id/amsCompleted"
+        android:textAlignment="center"
+        android:layout_marginTop="2dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/topBluelBar"
+        android:layout_alignParentStart="true"
+        android:background="#6DCFF6"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textSize="30dp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:typeface="monospace" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/testimonialLogo"
+        android:background="@drawable/testimonial_logo"
+        android:layout_alignTop="@+id/topBluelBar"
+        android:layout_alignStart="@+id/topBluelBar"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/textView3"
+        android:layout_below="@+id/topBluelBar"
+        android:layout_alignStart="@+id/topBluelBar"
+        android:background="#006B87"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_below="@+id/topBluelBar"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ams_white_transparent"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="17dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Testimonial"
+        android:id="@+id/testimonialWord"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="12dp" />
 
 </RelativeLayout>
