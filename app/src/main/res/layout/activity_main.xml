@@ -96,7 +96,8 @@
         android:layout_width="230sp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/amsEmail"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp" />
 
     <EditText
         android:id="@+id/editEmail"
@@ -104,21 +105,23 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/amsHeadline"
         android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/editText" />
+        android:layout_alignStart="@+id/editText"
+        android:layout_marginRight="20dp" />
 
     <EditText
         android:id="@+id/editHeadline"
         android:layout_width="230sp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/amsDescription"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="TAKE PHOTO"
-        android:id="@+id/textView"
+        android:id="@+id/takephotoText"
         android:layout_below="@+id/amsVideo"
         android:layout_alignEnd="@+id/amsPhoto"
         android:textColor="#A5C62F"
@@ -131,7 +134,7 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="TAKE VIDEO"
-        android:id="@+id/textView2"
+        android:id="@+id/takevideoText"
         android:layout_below="@+id/amsVideo"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
@@ -182,15 +185,16 @@
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView3"
+        android:id="@+id/darkBlueBarTop"
         android:layout_below="@+id/topBluelBar"
         android:layout_alignStart="@+id/topBluelBar"
         android:background="#006B87"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/amsvansLogo"
         android:layout_below="@+id/topBluelBar"
         android:layout_width="140dp"
         android:layout_height="30dp"
@@ -203,10 +207,23 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Testimonial"
-        android:id="@+id/testimonialWord"
-        android:textColor="#FFFFFF"
+        android:id="@+id/testimonialText"
+        android:textColor="#006B87"
         android:textStyle="bold"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="12dp"
+        android:clickable="false" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Express"
+        android:id="@+id/expressText"
+        android:layout_alignParentTop="true"
+        android:textColor="#006B87"
+        android:textStyle="italic"
+        android:layout_marginLeft="170dp"
         android:layout_marginTop="12dp" />
 
 </RelativeLayout>
