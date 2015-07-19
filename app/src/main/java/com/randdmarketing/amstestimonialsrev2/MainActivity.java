@@ -1,14 +1,23 @@
 package com.randdmarketing.amstestimonialsrev2;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
+import android.app.ActionBar;
 import android.media.ExifInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
@@ -17,13 +26,17 @@ import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.content.pm.PackageInfo;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -45,7 +58,8 @@ public class MainActivity extends Activity {
     private VideoView videoPreview;
     private Button btnCapturePicture, btnRecordVideo;
 
-    @Override
+    private final static String storeText = "testimony.txt";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -89,6 +103,7 @@ public class MainActivity extends Activity {
         }
     }
 
+
     /**
      * Checking device has camera hardware or not
      * */
@@ -125,7 +140,7 @@ public class MainActivity extends Activity {
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        // save file url in bundle as it will be null on scren orientation
+        // save file url in bundle as it will be null on screen orientation
         // changes
         outState.putParcelable("file_uri", fileUri);
     }
@@ -259,8 +274,7 @@ public class MainActivity extends Activity {
 
         // External sdcard location
         File mediaStorageDir = new File(
-                Environment
-                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
                 IMAGE_DIRECTORY_NAME);
 
         // Create the storage directory if it does not exist
@@ -288,4 +302,27 @@ public class MainActivity extends Activity {
 
         return mediaFile;
     }
+
+    public abstract class TextValidator implements TextWatcher {
+        private final EditText editText;
+
+        public TextValidator(EditText editText) {
+            this.editText = editText;
+        }
+
+        public abstract void validate(EditText editText, String text);
+
+        @Override
+        final public void afterTextChanged(Editable s) {
+            String text = editText.getText().toString();
+            validate(editText, text);
+        }
+
+        @Override
+        final public void beforeTextChanged(CharSequence s, int start, int count, int after) { /* Don't care */ }
+
+        @Override
+        final public void onTextChanged(CharSequence s, int start, int before, int count) { /* Don't care */ }
+    }
+
 }
