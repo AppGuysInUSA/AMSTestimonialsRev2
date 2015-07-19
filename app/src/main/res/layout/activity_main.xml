@@ -13,7 +13,6 @@
         android:layout_below="@+id/darkBlueBarTop"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="33dp"
-        android:layout_toStartOf="@+id/amsReleaseAgreement"
         android:text="Name:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#006B87" />
@@ -46,7 +45,7 @@
         android:id="@+id/btnCapturePicture"
         android:layout_width="75dp"
         android:layout_height="75dp"
-        android:layout_above="@+id/amsReleaseAgreement"
+        android:layout_above="@+id/amsCheckBox"
         android:layout_marginBottom="19dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/photo" />
@@ -60,16 +59,26 @@
         android:background="@drawable/videocam" />
 
     <CheckBox
-        android:id="@+id/amsReleaseAgreement"
+        android:id="@+id/amsCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:checked="false"
+        android:layout_marginLeft="90dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="*I agree to the Release Agreement"
         android:textColor="#006B87"
         android:textSize="12dp"
-        android:textStyle="normal" />
+        android:textStyle="normal"
+        android:id="@+id/textView"
+        android:layout_alignBottom="@+id/amsCheckBox"
+        android:layout_toEndOf="@+id/amsCheckBox"
+        android:layout_marginBottom="7sp" />
+
 
     <Button
         android:id="@+id/amsSubmit"
@@ -82,28 +91,22 @@
         android:background="@drawable/testimonial" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/nameInput"
         android:layout_width="230sp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/amsEmail"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:inputType="text|textCapSentences" />
 
     <EditText
-    android:id="@+id/editEmail"
-    android:layout_width="200sp"
-    android:layout_height="wrap_content"
-    android:layout_alignParentEnd="true"
-    android:layout_alignStart="@+id/editText"
-    android:layout_marginRight="20dp" />
-
-    <EditText
-        android:id="@+id/editHeadline"
+        android:id="@+id/emailInput"
         android:layout_width="230sp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/amsTestimony"
         android:layout_alignParentEnd="true"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:inputType="textEmailAddress" />
 
     <TextView
         android:id="@+id/takephotoText"
@@ -145,11 +148,6 @@
         android:textColor="#A5C62F"
         android:textStyle="bold" />
 
-    android:layout_alignTop="@+id/topBluelBar"
-    android:layout_alignStart="@+id/topBluelBar"
-    android:layout_marginLeft="5dp"
-    android:layout_marginTop="5dp" />
-
     <TextView
         android:id="@+id/darkBlueBarTop"
         android:layout_width="wrap_content"
@@ -172,28 +170,13 @@
         android:layout_marginLeft="17dp"
         android:background="@drawable/ams_white_transparent" />
 
-    TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Testimonial"
-    android:id="@+id/testimonialText"
-    android:textColor="#006B87"
-    android:textStyle="bold"
-    android:layout_marginLeft="50dp"
-    android:layout_marginTop="12dp"
-    android:clickable="false" />
-
-    TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:text="Express"
-    android:id="@+id/expressText"
-    android:layout_alignParentTop="true"
-    android:textColor="#006B87"
-    android:textStyle="italic"
-    android:layout_marginLeft="170dp"
-    android:layout_marginTop="12dp" />
+    <EditText
+        android:layout_width="900dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/testimonyInput"
+        android:layout_below="@+id/amsTestimony"
+        android:inputType="text|textCapSentences"
+        android:layout_alignStart="@+id/amsName"
+    android:layout_alignEnd="@+id/emailInput" />
 
 </RelativeLayout>
