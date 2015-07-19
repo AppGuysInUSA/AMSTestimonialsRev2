@@ -30,14 +30,14 @@
         android:textColor="#006B87" />
 
     <TextView
-        android:id="@+id/amsDescription"
+        android:id="@+id/amsTestimony"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/amsEmail"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="21dp"
-        android:text="Description:"
+        android:text="Testimony:"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#006B87" />
 
@@ -72,7 +72,7 @@
         android:textStyle="normal" />
 
     <Button
-        android:id="@+id/amsCompleted"
+        android:id="@+id/amsSubmit"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
@@ -89,7 +89,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp" />
 
-    EditText
+    <EditText
     android:id="@+id/editEmail"
     android:layout_width="200sp"
     android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
         android:id="@+id/editHeadline"
         android:layout_width="230sp"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/amsDescription"
+        android:layout_above="@+id/amsTestimony"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp" />
 
@@ -134,9 +134,9 @@
         android:id="@+id/submitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/amsCompleted"
-        android:layout_alignStart="@+id/amsCompleted"
-        android:layout_below="@+id/amsCompleted"
+        android:layout_alignEnd="@+id/amsSubmit"
+        android:layout_alignStart="@+id/amsSubmit"
+        android:layout_below="@+id/amsSubmit"
         android:layout_marginTop="2dp"
         android:gravity="center"
         android:text="SUBMIT"

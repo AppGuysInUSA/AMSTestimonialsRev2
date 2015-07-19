@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
             Toast.makeText(getApplicationContext(),
                     "Sorry! Your device doesn't support camera",
                     Toast.LENGTH_LONG).show();
-            // will close the app if the device does't have camera
+            // will close the app if the device doesn't have camera
             finish();
         }
     }
@@ -103,7 +103,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Capturing Camera Image will lauch camera app requrest image capture
+     * Capturing Camera Image will launch camera app request image capture
      */
     private void captureImage() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -206,7 +206,7 @@ public class MainActivity extends Activity {
 
             imgPreview.setVisibility(View.VISIBLE);
 
-            // bimatp factory
+            // bitmap factory
             BitmapFactory.Options options = new BitmapFactory.Options();
 
             // downsizing image as it throws OutOfMemory Exception for larger
