@@ -177,6 +177,30 @@
         android:layout_below="@+id/amsTestimony"
         android:inputType="text|textCapSentences"
         android:layout_alignStart="@+id/amsName"
-    android:layout_alignEnd="@+id/emailInput" />
+        android:layout_alignEnd="@+id/emailInput" />
+
+    <!-- To display picture taken -->
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgPreview"
+        android:visibility="invisible"
+        android:layout_below="@+id/testimonyInput"
+        android:layout_alignParentEnd="false"
+        android:layout_marginTop="45sp"
+        android:layout_alignParentStart="false"
+        android:layout_marginLeft="60sp" />
+
+    <!-- To preview video recorded -->
+    <VideoView
+        android:layout_width="wrap_content"
+        android:layout_height="115sp"
+        android:id="@+id/videoPreview"
+        android:visibility="invisible"
+        android:layout_below="@+id/testimonyInput"
+        android:layout_toEndOf="@+id/btnRecordVideo"
+        android:layout_alignParentEnd="false"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="40sp" />
 
 </RelativeLayout>

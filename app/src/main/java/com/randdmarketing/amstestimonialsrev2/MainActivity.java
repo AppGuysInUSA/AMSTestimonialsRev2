@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import android.media.ExifInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,8 +50,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //imgPreview = (ImageView) findViewById(R.id.imgPreview);
-        //videoPreview = (VideoView) findViewById(R.id.videoPreview);
+        imgPreview = (ImageView) findViewById(R.id.imgPreview);
+        videoPreview = (VideoView) findViewById(R.id.videoPreview);
         btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
 
@@ -202,7 +203,7 @@ public class MainActivity extends Activity {
     private void previewCapturedImage() {
         try {
             // hide video preview
-            videoPreview.setVisibility(View.GONE);
+            videoPreview.setVisibility(View.VISIBLE);
 
             imgPreview.setVisibility(View.VISIBLE);
 
@@ -228,7 +229,7 @@ public class MainActivity extends Activity {
     private void previewVideo() {
         try {
             // hide image preview
-            imgPreview.setVisibility(View.GONE);
+            imgPreview.setVisibility(View.VISIBLE);
 
             videoPreview.setVisibility(View.VISIBLE);
             videoPreview.setVideoPath(fileUri.getPath());
