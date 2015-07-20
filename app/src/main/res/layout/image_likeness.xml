@@ -32,15 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="I, the undersigned, declare that my image and likeness featured in photo(s) and/or video(s) are original, and that I as a featured subject hold exclusive copyright of my likeness and profile.
-\nI hereby transfer exclusive copyright for this material and my testimonial to AMS Vans, Inc. for the use of AMS Vans, Inc.
-\nThe following rights are waived by the undersigned:
-\nThe right to make claim of ownership or suit against AMS Vans, Inc., all or in part for the reproduction, use, or intent to generate revenue with the aforementioned photos, videos, or text.
-\nThe following rights are retained by AMS Vans, Inc.
-\nReproduction of said image(s) or text(s) in future works of their own, including, but not limited to:
-\nbrochures, books, presentations, marketing or public relations materials online and in print.
-\nAMS Vans, Inc. also retains the rights to include said images and text on their Web site or in future publications.
-\nElectronic or print copies may be made for commercial and non-commercial personal or training purposes."
+        android:text="@string/Likeness_Text"
         android:textColor="#006B87"
         android:id="@+id/imageLikenessText"
         android:layout_below="@+id/darkBlueBarTop"
@@ -64,7 +56,7 @@
         android:textStyle="bold" />
 
     <Button
-        android:id="@+id/btnBackToMain"
+        android:id="@+id/btnBack"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:background="@drawable/back"
@@ -73,6 +65,6 @@
         android:layout_alignParentStart="false"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
-        android:onClick="openMainActivity" />
+        android:onClick="onClick" />
 
 </RelativeLayout>

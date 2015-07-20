@@ -5,8 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.content.Intent;
@@ -26,7 +28,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity{
 
     // Activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
@@ -310,5 +312,10 @@ public class MainActivity extends Activity {
         @Override
         final public void onTextChanged(CharSequence s, int start, int before, int count) { /* Don't care */ }
     }
+    public void onClick(View v){
+        Intent intent = new Intent(this, ImageLikeness.class);
+        startActivity(intent);
+    }
+
 
 }

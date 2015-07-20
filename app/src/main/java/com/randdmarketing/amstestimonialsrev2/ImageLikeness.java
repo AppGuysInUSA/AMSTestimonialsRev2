@@ -1,14 +1,12 @@
 package com.randdmarketing.amstestimonialsrev2;
 
 import android.app.Activity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 public class ImageLikeness extends Activity {
 
@@ -20,7 +18,7 @@ public class ImageLikeness extends Activity {
         setContentView(R.layout.image_likeness);
 
         // Locate the button in image_likeness.xml
-        btnBackToMain = (Button) findViewById(R.id.btnBackToMain);
+        btnBackToMain = (Button) findViewById(R.id.btnBack);
     }
 
         public void onClick (View view) {

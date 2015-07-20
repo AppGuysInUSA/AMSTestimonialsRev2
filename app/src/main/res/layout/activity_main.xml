@@ -70,19 +70,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="*I agree to the Release Agreement"
+        android:text="@string/Release_Agreement"
         android:textColor="#006B87"
         android:textSize="12dp"
         android:textStyle="normal"
-        android:id="@+id/textView"
+        android:id="@+id/releaseText"
         android:layout_alignBottom="@+id/amsCheckBox"
         android:layout_toEndOf="@+id/amsCheckBox"
         android:layout_marginBottom="7sp"
-        android:onClick="onClick" />
+        android:onClick="onClick"/>
 
 
     <Button
-        android:id="@+id/btnBackToMain"
+        android:id="@+id/btnSubmitFile"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
@@ -138,9 +138,9 @@
         android:id="@+id/submitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btnBackToMain"
-        android:layout_alignStart="@+id/btnBackToMain"
-        android:layout_below="@+id/btnBackToMain"
+        android:layout_alignEnd="@+id/btnSubmitFile"
+        android:layout_alignStart="@+id/btnSubmitFile"
+        android:layout_below="@+id/btnSubmitFile"
         android:layout_marginTop="2dp"
         android:gravity="center"
         android:text="SUBMIT"
