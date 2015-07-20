@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.zip.ZipFile;
 
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -32,6 +33,9 @@ public class MainActivity extends Activity{
     EditText nameInput;
     EditText emailInput;
     EditText testimonyInput;
+
+    //Storing User data internally
+
 
 
     // Activity request codes
