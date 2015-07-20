@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#FFFFFF"
+    tools:context=".ImageLikeness">
+
+    <TextView
+        android:id="@+id/darkBlueBarTop"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_alignBottom="@+id/amsvansLogo"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/topBluelBar"
+        android:background="#006B87"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/amsvansLogo"
+        android:layout_width="300dp"
+        android:layout_height="75dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="17dp"
+        android:background="@drawable/ams_white_transparent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="I, the undersigned, declare that my image and likeness featured in photo(s) and/or video(s) are original, and that I as a featured subject hold exclusive copyright of my likeness and profile.
+\nI hereby transfer exclusive copyright for this material and my testimonial to AMS Vans, Inc. for the use of AMS Vans, Inc.
+\nThe following rights are waived by the undersigned:
+\nThe right to make claim of ownership or suit against AMS Vans, Inc., all or in part for the reproduction, use, or intent to generate revenue with the aforementioned photos, videos, or text.
+\nThe following rights are retained by AMS Vans, Inc.
+\nReproduction of said image(s) or text(s) in future works of their own, including, but not limited to:
+\nbrochures, books, presentations, marketing or public relations materials online and in print.
+\nAMS Vans, Inc. also retains the rights to include said images and text on their Web site or in future publications.
+\nElectronic or print copies may be made for commercial and non-commercial personal or training purposes."
+        android:textColor="#006B87"
+        android:id="@+id/imageLikenessText"
+        android:layout_below="@+id/darkBlueBarTop"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="IMAGE AND LIKENESS RELEASE AGREEMENT"
+        android:textColor="#006B87"
+        android:id="@+id/imagelikenessHeading"
+        android:layout_below="@+id/darkBlueBarTop"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnBackToMain"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/back"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="false"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:onClick="openMainActivity" />
+
+</RelativeLayout>

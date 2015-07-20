@@ -65,6 +65,7 @@ public class MainActivity extends Activity {
                 // capture picture
                 captureImage();
             }
+
         });
 
         /**
