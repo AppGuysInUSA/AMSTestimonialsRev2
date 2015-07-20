@@ -63,6 +63,7 @@ public class MainActivity extends Activity{
         videoPreview = (VideoView) findViewById(R.id.videoPreview);
         btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
+
         //////////////   Start of User info capture  /////////////////////
         nameInput = (EditText) findViewById(R.id.nameInput);
         emailInput = (EditText) findViewById(R.id.emailInput);
@@ -75,14 +76,14 @@ public class MainActivity extends Activity{
             @Override
             public void onClick(View arg0) {
 
-                final String email = emailInput.getText().toString();
-                if (!isValidEmail(email)) {
-                    emailInput.setError("Invalid Email!");
-                }
-
                 final String name = nameInput.getText().toString();
                 if (!isValidName(name)) {
                     nameInput.setError("Name Must Be Entered!");
+                }
+
+                final String email = emailInput.getText().toString();
+                if (!isValidEmail(email)) {
+                    emailInput.setError("Invalid Email!");
                 }
 
             }
@@ -285,7 +286,7 @@ public class MainActivity extends Activity{
     }
 
     private boolean isValidName(String name) {
-        String NAME = "^[a-zA-Z\\s]*$*";
+        String NAME = "^[a-zA-Z][a-zA-Z\\\\s]+$\n";
 
         Pattern pattern = Pattern.compile(NAME,Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(name);
