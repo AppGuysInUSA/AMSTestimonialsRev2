@@ -4,6 +4,9 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.jar.Attributes;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -24,6 +27,7 @@ import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 import android.widget.VideoView;
+import android.view.View.OnClickListener;
 
 
 public class MainActivity extends Activity{
@@ -64,6 +68,25 @@ public class MainActivity extends Activity{
         emailInput = (EditText) findViewById(R.id.emailInput);
         testimonyInput = (EditText) findViewById(R.id.testimonyInput);
         //////////////   End of User info capture  /////////////////////
+
+
+        findViewById(R.id.btnSubmitFile).setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                final String email = emailInput.getText().toString();
+                if (!isValidEmail(email)) {
+                    emailInput.setError("Invalid Email!");
+                }
+
+                final String name = nameInput.getText().toString();
+                if (!isValidName(name)) {
+                    nameInput.setError("Name Must Be Entered!");
+                }
+
+            }
+        });
 
         /**
         * Capture image button click event
@@ -249,6 +272,24 @@ public class MainActivity extends Activity{
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+
+    private boolean isValidEmail(String email) {
+        String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+        Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidName(String name) {
+        String NAME = "^[a-zA-Z\\s]*$*";
+
+        Pattern pattern = Pattern.compile(NAME,Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
     }
 
 
