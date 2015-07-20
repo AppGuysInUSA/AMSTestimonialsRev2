@@ -28,6 +28,12 @@ import android.widget.VideoView;
 
 public class MainActivity extends Activity{
 
+    //Capture User Inputs
+    EditText nameInput;
+    EditText emailInput;
+    EditText testimonyInput;
+
+
     // Activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
     private static final int CAMERA_CAPTURE_VIDEO_REQUEST_CODE = 200;
@@ -53,7 +59,11 @@ public class MainActivity extends Activity{
         videoPreview = (VideoView) findViewById(R.id.videoPreview);
         btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
-
+        //////////////   Start of User info capture  /////////////////////
+        nameInput = (EditText) findViewById(R.id.nameInput);
+        emailInput = (EditText) findViewById(R.id.emailInput);
+        testimonyInput = (EditText) findViewById(R.id.testimonyInput);
+        //////////////   End of User info capture  /////////////////////
 
         /**
         * Capture image button click event
@@ -312,7 +322,17 @@ public class MainActivity extends Activity{
     }
     public void onClick(View v){
         Intent intent = new Intent(this, ImageLikeness.class);
+
+        /////////////// Start of Test ////////////////////////////
+        /* Test to make sure user variables are captured and passed to next Activity
+        final EditText nameInput = (EditText) findViewById(R.id.nameInput);
+        String cusName = nameInput.getText().toString();
+        intent.putExtra("userName", cusName);
+        */
+        /////////////// Start of Test ////////////////////////////
+
         startActivity(intent);
+
     }
 
 

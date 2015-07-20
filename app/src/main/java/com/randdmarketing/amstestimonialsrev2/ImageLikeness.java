@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ImageLikeness extends Activity {
 
@@ -16,6 +17,20 @@ public class ImageLikeness extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_likeness);
+
+        ///////////////////////////////// Start of Test //////////////////////////////
+        //Test user name input being passed to this activity
+        /*
+        Bundle userData = getIntent().getExtras();
+        if (userData == null) {
+            return;
+        }
+
+        String userName = userData.getString("userName");
+        final TextView showName = (TextView) findViewById(R.id.showName);
+        showName.setText(userName);
+        */
+        ///////////////////////////////// End of Test //////////////////////////////
 
         // Locate the button in image_likeness.xml
         btnBackToMain = (Button) findViewById(R.id.btnBack);
