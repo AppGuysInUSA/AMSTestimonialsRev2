@@ -1,32 +1,28 @@
 package com.randdmarketing.amstestimonialsrev2;
 
-import android.media.ExifInterface;
+import android.app.Activity;
 import android.util.Log;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 
-public class ZipFile {
-
+public class ZipFile extends Activity {
     private static final int BUFFER = 2048;
 
     private String[] _files;
     private String _zipFile;
 
-    public ZipFile(String[] files, String zipFile){
+    public ZipFile(String[] files, String zipFile) {
         _files = files;
         _zipFile = zipFile;
     }
 
-    public void zip(){
-        try {
+    public void zip() {
+        try  {
             BufferedInputStream origin = null;
             FileOutputStream dest = new FileOutputStream(_zipFile);
 
@@ -34,7 +30,7 @@ public class ZipFile {
 
             byte data[] = new byte[BUFFER];
 
-            for (int i = 0; i < _files.length; i++) {
+            for(int i=0; i < _files.length; i++) {
                 Log.v("Compress", "Adding: " + _files[i]);
                 FileInputStream fi = new FileInputStream(_files[i]);
                 origin = new BufferedInputStream(fi, BUFFER);
@@ -46,13 +42,12 @@ public class ZipFile {
                 }
                 origin.close();
             }
+
             out.close();
-        }catch(Exception e) {
+        } catch(Exception e) {
             e.printStackTrace();
-
-            }
-
         }
 
-}
+    }
 
+}

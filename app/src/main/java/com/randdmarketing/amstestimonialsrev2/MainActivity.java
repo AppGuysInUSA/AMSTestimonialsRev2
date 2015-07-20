@@ -1,42 +1,27 @@
 package com.randdmarketing.amstestimonialsrev2;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
 
-import android.app.ActionBar;
-import android.media.ExifInterface;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.MediaStore;
-import android.content.pm.PackageInfo;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -69,9 +54,10 @@ public class MainActivity extends Activity {
         btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
 
+
         /**
-         * Capture image button click event
-         */
+        * Capture image button click event
+        */
         btnCapturePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -102,7 +88,6 @@ public class MainActivity extends Activity {
             finish();
         }
     }
-
 
     /**
      * Checking device has camera hardware or not

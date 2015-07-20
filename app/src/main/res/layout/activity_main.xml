@@ -50,6 +50,7 @@
         android:layout_marginLeft="20dp"
         android:background="@drawable/photo" />
 
+    <!-- Capture video button -->
     <Button
         android:id="@+id/btnRecordVideo"
         android:layout_width="75dp"
@@ -79,9 +80,9 @@
         android:layout_toEndOf="@+id/amsCheckBox"
         android:layout_marginBottom="7sp" />
 
-
+    <!-- Submit file button -->
     <Button
-        android:id="@+id/amsSubmit"
+        android:id="@+id/btnSubmitFile"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_alignParentEnd="true"
@@ -137,9 +138,9 @@
         android:id="@+id/submitText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/amsSubmit"
-        android:layout_alignStart="@+id/amsSubmit"
-        android:layout_below="@+id/amsSubmit"
+        android:layout_alignEnd="@+id/btnSubmitFile"
+        android:layout_alignStart="@+id/btnSubmitFile"
+        android:layout_below="@+id/btnSubmitFile"
         android:layout_marginTop="2dp"
         android:gravity="center"
         android:text="SUBMIT"
