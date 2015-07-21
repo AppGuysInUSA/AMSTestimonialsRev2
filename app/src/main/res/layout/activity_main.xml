@@ -88,7 +88,7 @@
         android:layout_alignTop="@+id/btnRecordVideo"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="20dp"
-        android:visibility="visible"
+        android:visibility="invisible"
         android:background="@drawable/testimonial" />
 
     <EditText
