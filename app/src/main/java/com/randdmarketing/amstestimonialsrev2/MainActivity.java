@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.zip.ZipOutputStream;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.text.Editable;
@@ -22,6 +23,8 @@ import android.graphics.Bitmap;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.app.Activity;
@@ -29,12 +32,15 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.VideoView;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
 
 
-public class MainActivity extends Activity{
+
+public class MainActivity extends Activity implements OnClickListener{
 
     //Capture User Inputs
     EditText nameInput;
@@ -55,7 +61,7 @@ public class MainActivity extends Activity{
 
     private ImageView imgPreview;
     private VideoView videoPreview;
-    private Button btnCapturePicture, btnRecordVideo;
+    private Button btnCapturePicture, btnRecordVideo, btnSubmitFile;
 
     private final static String storeText = "testimony.txt";
 
@@ -67,6 +73,7 @@ public class MainActivity extends Activity{
         videoPreview = (VideoView) findViewById(R.id.videoPreview);
         btnCapturePicture = (Button) findViewById(R.id.btnCapturePicture);
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
+        btnSubmitFile = (Button) findViewById(R.id.btnSubmitFile);
 
         //////////////   Start of User info capture  /////////////////////
         nameInput = (EditText) findViewById(R.id.nameInput);
@@ -296,6 +303,7 @@ public class MainActivity extends Activity{
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
+
 
 
     /**
