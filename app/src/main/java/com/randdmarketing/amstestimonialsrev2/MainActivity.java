@@ -1,12 +1,16 @@
 package com.randdmarketing.amstestimonialsrev2;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 import java.util.jar.Attributes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipOutputStream;
 
 import android.support.annotation.NonNull;
 import android.os.Bundle;
@@ -70,7 +74,7 @@ public class MainActivity extends Activity{
         testimonyInput = (EditText) findViewById(R.id.testimonyInput);
         //////////////   End of User info capture  /////////////////////
 
-
+        /*
         findViewById(R.id.btnSubmitFile).setOnClickListener(new OnClickListener() {
 
             @Override
@@ -87,7 +91,7 @@ public class MainActivity extends Activity{
                 }
 
             }
-        });
+        });  */
 
         /**
         * Capture image button click event
@@ -374,8 +378,25 @@ public class MainActivity extends Activity{
         /////////////// Start of Test ////////////////////////////
 
         startActivity(intent);
-
     }
 
+    //////////// Save Strings as Text in a file /////////////////
+    /*
+    public void submitBtnClicked(View view){
+
+        String filename = nameInput.getText().toString() + "AMS Testimony";
+        String userFileData = nameInput.getText().toString() + emailInput.getText().toString() + testimonyInput.getText().toString();
+        try {
+            FileOutputStream fileOutputStream = openFileOutput(filename,MODE_PRIVATE);
+            fileOutputStream.write(userFileData.getBytes());
+            fileOutputStream.close();
+            Toast.makeText(getApplicationContext(),"Testimony Saved",Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    */
 
 }
