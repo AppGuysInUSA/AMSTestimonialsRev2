@@ -103,7 +103,7 @@ public class MainActivity extends Activity implements OnClickListener{
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){btnSubmitFile.setVisibility(View.VISIBLE);}
-                if(!isChecked){btnSubmitFile.setError("Click the fucking box");}
+                if(!isChecked){btnSubmitFile.setVisibility(View.INVISIBLE);}
             }
         });
 
@@ -304,7 +304,7 @@ public class MainActivity extends Activity implements OnClickListener{
     }
 
     private boolean isValidName(String name) {
-        String NAME = "^[a-zA-Z][a-zA-Z\\\\s]+$\n";
+        String NAME = "^[a-zA-Z\\s]+$";
 
         Pattern pattern = Pattern.compile(NAME,Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(name);
