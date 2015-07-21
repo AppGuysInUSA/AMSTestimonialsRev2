@@ -36,13 +36,11 @@ public class ImageLikeness extends Activity {
         btnBackToMain = (Button) findViewById(R.id.btnBack);
     }
 
-        public void onClick (View view) {
-            Intent backBtnIntent = new Intent(this, MainActivity.class);
-            startActivity(backBtnIntent);
-
+         public void onClick (View view) {
+         //Intent backBtnIntent = new Intent(this, MainActivity.class);
+          //  startActivity(backBtnIntent);
+             onBackPressed();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
