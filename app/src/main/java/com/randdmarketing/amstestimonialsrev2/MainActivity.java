@@ -93,6 +93,17 @@ public class MainActivity extends Activity implements OnClickListener{
                     emailInput.setError("Invalid Email!");
                 }
 
+
+            }
+        });
+
+
+        CheckBox cb = (CheckBox) findViewById(R.id.amsCheckBox);
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){btnSubmitFile.setVisibility(View.VISIBLE);}
+                if(!isChecked){btnSubmitFile.setVisibility(View.INVISIBLE);}
             }
         });
 
