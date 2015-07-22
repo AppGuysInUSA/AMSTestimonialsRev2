@@ -1,6 +1,10 @@
 package com.randdmarketing.amstestimonialsrev2;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -52,7 +56,7 @@ public class MainActivity extends Activity implements OnClickListener{
     public static final int MEDIA_TYPE_VIDEO = 2;
 
     // directory name to store captured images and videos
-    private static final String IMAGE_DIRECTORY_NAME = "AMS Testimonial";
+    public static final String IMAGE_DIRECTORY_NAME = "AMS Testimonial";
 
     private Uri fileUri; // file url to store image/video
 
@@ -82,6 +86,7 @@ public class MainActivity extends Activity implements OnClickListener{
 
         findViewById(R.id.btnSubmitFile).setOnClickListener(new OnClickListener() {
 
+
             @Override
             public void onClick(View arg0)  {
 
@@ -95,9 +100,38 @@ public class MainActivity extends Activity implements OnClickListener{
                     emailInput.setError("Invalid Email!");
                 }
 
+                ////////////// Begin file capture /////////////////////
+                String userFileData = nameInput.getText().toString() + emailInput.getText().toString() + testimonyInput.getText().toString();
+                FileOutputStream fOut = null;
+                //Since you are creating a subdirectory, you need to make sure it's there first
+                File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +"AMS Testimony");
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
+
+                try {
+                    //Create the stream pointing at the file location
+                    fOut = new FileOutputStream(new File(directory, "Testimony.txt"));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                OutputStreamWriter osw = new OutputStreamWriter(fOut);
+                try {
+                    osw.write(userFileData);
+
+                    osw.flush();
+                    osw.close();
+
+                    Toast.makeText(getBaseContext(), "File saved successfully!",
+                            Toast.LENGTH_SHORT).show();
+                }
+                catch (IOException e) {
+                    e.printStackTrace();
+                }
+                ///////////////// End file capture ////////////////////////
+
             }
         });
-
 
         CheckBox cb = (CheckBox) findViewById(R.id.amsCheckBox);
 
@@ -304,7 +338,6 @@ public class MainActivity extends Activity implements OnClickListener{
         }
     }
 
-
     private boolean isValidEmail(String email) {
         String EMAIL_PATTERN = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
                 + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
@@ -321,8 +354,6 @@ public class MainActivity extends Activity implements OnClickListener{
         Matcher matcher = pattern.matcher(name);
         return matcher.matches();
     }
-
-
 
     /**
      * ------------ Helper Methods ----------------------
@@ -394,18 +425,8 @@ public class MainActivity extends Activity implements OnClickListener{
     }
     public void onClick(View v){
         Intent intent = new Intent(this, ImageLikeness.class);
-
-        /////////////// Start of Test ////////////////////////////
-        /* Test to make sure user variables are captured and passed to next Activity
-        final EditText nameInput = (EditText) findViewById(R.id.nameInput);
-        String cusName = nameInput.getText().toString();
-        intent.putExtra("userName", cusName);
-        */
-        /////////////// Start of Test ////////////////////////////
-
         startActivity(intent);
 
     }
-
 
 }
