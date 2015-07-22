@@ -369,12 +369,11 @@ public class MainActivity extends Activity implements OnClickListener{
     /**
      * returning image / video
      */
-    private static File getOutputMediaFile(int type) {
+    private File getOutputMediaFile(int type) {
 
         // External sdcard location
         File mediaStorageDir = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                IMAGE_DIRECTORY_NAME);
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +" AMS Testimony");
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
