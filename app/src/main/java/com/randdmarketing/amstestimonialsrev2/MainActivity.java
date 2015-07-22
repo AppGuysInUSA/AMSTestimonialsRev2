@@ -129,7 +129,9 @@ public class MainActivity extends Activity implements OnClickListener{
                     e.printStackTrace();
                 }
                 ///////////////// End file capture ////////////////////////
-
+                Intent restartIntent = getIntent();
+                finish();
+                startActivity(restartIntent);
             }
         });
 
