@@ -72,6 +72,7 @@ public class MainActivity extends Activity implements OnClickListener{
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
         btnSubmitFile = (Button) findViewById(R.id.btnSubmitFile);
 
+
         //////////////   Start of User info capture  /////////////////////
         nameInput = (EditText) findViewById(R.id.nameInput);
         emailInput = (EditText) findViewById(R.id.emailInput);
@@ -82,7 +83,7 @@ public class MainActivity extends Activity implements OnClickListener{
         findViewById(R.id.btnSubmitFile).setOnClickListener(new OnClickListener() {
 
             @Override
-            public void onClick(View arg0) {
+            public void onClick(View arg0)  {
 
                 final String name = nameInput.getText().toString();
                 if (!isValidName(name)) {
@@ -99,11 +100,21 @@ public class MainActivity extends Activity implements OnClickListener{
 
 
         CheckBox cb = (CheckBox) findViewById(R.id.amsCheckBox);
+
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){btnSubmitFile.setVisibility(View.VISIBLE);}
-                if(!isChecked){btnSubmitFile.setVisibility(View.INVISIBLE);}
+                TextView TOSagreement = (TextView) findViewById(R.id.TOSagreement);
+                if (isChecked) {
+                    btnSubmitFile.setVisibility(View.VISIBLE);
+                    TOSagreement.setVisibility(View.INVISIBLE);
+                }
+                if (!isChecked) {
+                    btnSubmitFile.setVisibility(View.INVISIBLE);
+                    TOSagreement.setVisibility(View.VISIBLE);
+                }
+
+
             }
         });
 
