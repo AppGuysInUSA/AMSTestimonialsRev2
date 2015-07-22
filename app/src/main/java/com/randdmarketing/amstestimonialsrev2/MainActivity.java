@@ -84,7 +84,7 @@ public class MainActivity extends Activity implements OnClickListener{
 
 
             @Override
-            public void onClick(View arg0)  {
+            public void onClick(View arg0) {
 
                 final String name = nameInput.getText().toString();
                 if (!isValidName(name)) {
@@ -94,40 +94,42 @@ public class MainActivity extends Activity implements OnClickListener{
                 final String email = emailInput.getText().toString();
                 if (!isValidEmail(email)) {
                     emailInput.setError("Invalid Email!");
-                }
+                    }
 
-                ////////////// Begin file capture /////////////////////
-                String userFileData = nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString();
-                FileOutputStream fOut = null;
-                //Since you are creating a subdirectory, you need to make sure it's there first
-                File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +" AMS Testimony");
-                if (!directory.exists()) {
-                    directory.mkdirs();
-                }
+                ////////////// Begin file capture after validation /////////////////////
+                if (isValidName(name) && (isValidEmail(email))) {
 
-                try {
-                    //Create the stream pointing at the file location
-                    fOut = new FileOutputStream(new File(directory, "Testimony.txt"));
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                }
-                OutputStreamWriter osw = new OutputStreamWriter(fOut);
-                try {
-                    osw.write(userFileData);
+                    String userFileData = nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString();
+                    FileOutputStream fOut = null;
+                    //Since you are creating a subdirectory, you need to make sure it's there first
+                    File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() + " AMS Testimony");
+                    if (!directory.exists()) {
+                        directory.mkdirs();
+                    }
 
-                    osw.flush();
-                    osw.close();
+                    try {
+                        //Create the stream pointing at the file location
+                        fOut = new FileOutputStream(new File(directory, "Testimony.txt"));
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    OutputStreamWriter osw = new OutputStreamWriter(fOut);
+                    try {
+                        osw.write(userFileData);
 
-                    Toast.makeText(getBaseContext(), "Thank you...Testimony saved successfully!",
-                            Toast.LENGTH_LONG).show();
+                        osw.flush();
+                        osw.close();
+
+                        Toast.makeText(getBaseContext(), "Thank you...Testimony saved successfully!",
+                                Toast.LENGTH_LONG).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ///////////////// End file capture ////////////////////////
+                    Intent restartIntent = getIntent();
+                    finish();
+                    startActivity(restartIntent);
                 }
-                catch (IOException e) {
-                    e.printStackTrace();
-                }
-                ///////////////// End file capture ////////////////////////
-                Intent restartIntent = getIntent();
-                finish();
-                startActivity(restartIntent);
             }
         });
 
@@ -145,7 +147,6 @@ public class MainActivity extends Activity implements OnClickListener{
                     btnSubmitFile.setVisibility(View.INVISIBLE);
                     tosAgreement.setVisibility(View.VISIBLE);
                 }
-
 
             }
         });
