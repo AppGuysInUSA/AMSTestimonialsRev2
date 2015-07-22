@@ -191,9 +191,9 @@
         android:visibility="invisible"
         android:layout_below="@+id/testimonyInput"
         android:layout_alignParentEnd="false"
-        android:layout_marginTop="80sp"
+        android:layout_marginTop="30sp"
         android:layout_alignParentStart="false"
-        android:layout_marginLeft="60sp" />
+        android:layout_marginLeft="40sp" />
 
     <!-- To preview video recorded -->
     <VideoView
@@ -206,6 +206,20 @@
         android:layout_alignParentEnd="false"
         android:layout_marginTop="30sp"
         android:layout_marginRight="40sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/AgreeToTOS"
+        android:textColor="#ff870000"
+        android:textSize="12sp"
+        android:textStyle="normal"
+        android:id="@+id/TOSagreement"
+        android:onClick="onClick"
+        android:layout_below="@+id/testimonyInput"
+        android:layout_centerHorizontal="true"
+        android:editable="false" />
 
     <!--
         <TextView
