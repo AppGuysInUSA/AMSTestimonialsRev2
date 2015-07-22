@@ -101,10 +101,10 @@ public class MainActivity extends Activity implements OnClickListener{
                 }
 
                 ////////////// Begin file capture /////////////////////
-                String userFileData = nameInput.getText().toString() + emailInput.getText().toString() + testimonyInput.getText().toString();
+                String userFileData = nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString();
                 FileOutputStream fOut = null;
                 //Since you are creating a subdirectory, you need to make sure it's there first
-                File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +"AMS Testimony");
+                File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +" AMS Testimony");
                 if (!directory.exists()) {
                     directory.mkdirs();
                 }
@@ -122,8 +122,8 @@ public class MainActivity extends Activity implements OnClickListener{
                     osw.flush();
                     osw.close();
 
-                    Toast.makeText(getBaseContext(), "File saved successfully!",
-                            Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), "Thank you...Testimony saved successfully!",
+                            Toast.LENGTH_LONG).show();
                 }
                 catch (IOException e) {
                     e.printStackTrace();
