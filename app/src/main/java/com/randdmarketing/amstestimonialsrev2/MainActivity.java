@@ -104,14 +104,14 @@ public class MainActivity extends Activity implements OnClickListener{
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                TextView TOSagreement = (TextView) findViewById(R.id.TOSagreement);
+                TextView tosAgreement = (TextView) findViewById(R.id.tosAgreement);
                 if (isChecked) {
                     btnSubmitFile.setVisibility(View.VISIBLE);
-                    TOSagreement.setVisibility(View.INVISIBLE);
+                    tosAgreement.setVisibility(View.INVISIBLE);
                 }
                 if (!isChecked) {
                     btnSubmitFile.setVisibility(View.INVISIBLE);
-                    TOSagreement.setVisibility(View.VISIBLE);
+                    tosAgreement.setVisibility(View.VISIBLE);
                 }
 
 
