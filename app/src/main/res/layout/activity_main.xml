@@ -99,6 +99,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
         android:inputType="text|textCapSentences" />
 
     <EditText
@@ -109,6 +111,8 @@
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp"
         android:layout_marginTop="0dp"
+        android:imeOptions="actionNext"
+        android:singleLine="true"
         android:inputType="textEmailAddress" />
 
     <TextView
@@ -178,9 +182,10 @@
         android:layout_height="38sp"
         android:id="@+id/testimonyInput"
         android:layout_below="@+id/amsTestimony"
-        android:inputType="text|textMultiLine|textCapSentences"
+        android:inputType="text|textCapSentences"
         android:layout_alignStart="@+id/amsName"
-        android:singleLine="false"
+        android:imeOptions="actionDone"
+        android:singleLine="true"
         android:layout_alignEnd="@+id/emailInput" />
 
     <!-- To display picture taken -->
@@ -191,7 +196,7 @@
         android:visibility="invisible"
         android:layout_below="@+id/testimonyInput"
         android:layout_alignParentEnd="false"
-        android:layout_marginTop="30sp"
+        android:layout_marginTop="50sp"
         android:layout_alignParentStart="false"
         android:layout_marginLeft="40sp" />
 
@@ -215,7 +220,7 @@
         android:textColor="#ff870000"
         android:textSize="12sp"
         android:textStyle="normal"
-        android:id="@+id/TOSagreement"
+        android:id="@+id/tosAgreement"
         android:onClick="onClick"
         android:layout_below="@+id/testimonyInput"
         android:layout_centerHorizontal="true"

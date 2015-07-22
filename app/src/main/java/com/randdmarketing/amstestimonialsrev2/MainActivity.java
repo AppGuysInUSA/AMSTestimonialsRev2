@@ -122,8 +122,8 @@ public class MainActivity extends Activity implements OnClickListener{
                     osw.flush();
                     osw.close();
 
-                    Toast.makeText(getBaseContext(), "Testimony saved successfully!",
-                            Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), "File saved successfully!",
+                            Toast.LENGTH_SHORT).show();
                 }
                 catch (IOException e) {
                     e.printStackTrace();
@@ -153,8 +153,8 @@ public class MainActivity extends Activity implements OnClickListener{
         });
 
         /**
-         * Capture image button click event
-         */
+        * Capture image button click event
+        */
         btnCapturePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -369,11 +369,12 @@ public class MainActivity extends Activity implements OnClickListener{
     /**
      * returning image / video
      */
-    private  File getOutputMediaFile(int type) {
+    private static File getOutputMediaFile(int type) {
 
         // External sdcard location
         File mediaStorageDir = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +"AMS Testimony");
+                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
+                IMAGE_DIRECTORY_NAME);
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
