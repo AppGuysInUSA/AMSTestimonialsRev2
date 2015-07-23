@@ -8,9 +8,11 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.jar.Attributes;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.text.Editable;
@@ -30,10 +32,13 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+
 
 
 public class MainActivity extends Activity implements OnClickListener{
@@ -71,6 +76,12 @@ public class MainActivity extends Activity implements OnClickListener{
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
         btnSubmitFile = (Button) findViewById(R.id.btnSubmitFile);
 
+        //////////////// Create folder under internal root to store files ///////////
+        File storagePath = new File(Environment.getExternalStorageDirectory()+ "/AMS Testimonial");
+        if (!storagePath.exists()) {
+            storagePath.mkdirs();
+        }
+
 
         //////////////   Start of User info capture  /////////////////////
         nameInput = (EditText) findViewById(R.id.nameInput);
@@ -93,7 +104,7 @@ public class MainActivity extends Activity implements OnClickListener{
                 final String email = emailInput.getText().toString();
                 if (!isValidEmail(email)) {
                     emailInput.setError("Invalid Email!");
-                    }
+                }
 
                 ////////////// Begin file capture after validation /////////////////////
                 if (isValidName(name) && (isValidEmail(email))) {
@@ -101,7 +112,8 @@ public class MainActivity extends Activity implements OnClickListener{
                     String userFileData = nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString();
                     FileOutputStream fOut = null;
                     //Since you are creating a subdirectory, you need to make sure it's there first
-                    File directory = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() + " AMS Testimony");
+
+                    File directory = new File( Environment.getExternalStorageDirectory()+ "/AMS Testimonial/", nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString());
                     if (!directory.exists()) {
                         directory.mkdirs();
                     }
@@ -147,12 +159,13 @@ public class MainActivity extends Activity implements OnClickListener{
                     tosAgreement.setVisibility(View.VISIBLE);
                 }
 
+
             }
         });
 
         /**
-        * Capture image button click event
-        */
+         * Capture image button click event
+         */
         btnCapturePicture.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -371,7 +384,7 @@ public class MainActivity extends Activity implements OnClickListener{
 
         // External sdcard location
         File mediaStorageDir = new File(
-                Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES), nameInput.getText().toString() +" AMS Testimony");
+                Environment.getExternalStorageDirectory()+ "/AMS Testimonial/" + nameInput.getText().toString());
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
