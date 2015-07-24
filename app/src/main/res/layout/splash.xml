@@ -21,6 +21,20 @@
         android:textAlignment="center"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center"
+        android:id="@+id/enterBtn"
+        android:background="@drawable/enterapp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:textAlignment="center"
+        android:layout_centerHorizontal="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.TextView;
 public class SplashActivity extends Activity {
 
     Button wifiLogo;
+    Button enterBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,42 +27,93 @@ public class SplashActivity extends Activity {
         setContentView(R.layout.splash);
 
         wifiLogo = (Button) findViewById(R.id.wifiLogo);
+        enterBtn = (Button) findViewById(R.id.enterBtn);
+        enterBtn.setVisibility(View.INVISIBLE);
+        wifiLogo.setVisibility(View.INVISIBLE);
 
         ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo userWifi = connManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+
+        // If WiFi is turned on and is connected to Network...erythang all good
 
         if (userWifi.isConnected()) {
-            TextView wifiMsg = (TextView)findViewById(R.id.wifiMsg);
+            TextView wifiMsg = (TextView) findViewById(R.id.wifiMsg);
             wifiMsg.setText("WIFI ENABLED AND CURRENTLY ONLINE");
             Intent i = new Intent(SplashActivity.this, MainActivity.class);
+            finish();
             startActivity(i);
-
-        } else {
-
-            Toast.makeText(getBaseContext(), "Please make sure you are on WI-FI", Toast.LENGTH_LONG).show();
-            TextView wifiMsg = (TextView)findViewById(R.id.wifiMsg);
-            wifiMsg.setText("WIFI IS NOT ENABLED \r\n OR NOT ONLINE \r\n\n If not on WiFi Network \r\n Data Charges may incur when submitting.");
 
         }
 
-        findViewById(R.id.wifiLogo).setOnClickListener(new View.OnClickListener() {
+        // If WiFi is not turned on... turn it on
 
-            @Override
-            public void onClick(View v) {
+        if (wifi.setWifiEnabled(false)) {
+            //-Toast.makeText(getBaseContext(), "Please make sure you are on WI-FI", Toast.LENGTH_LONG).show();
+            TextView wifiMsg = (TextView) findViewById(R.id.wifiMsg);
+            wifiMsg.setText("WIFI IS NOT ENABLED \r\n Click above to turn on Wi-Fi");
+            wifiLogo.setVisibility(View.VISIBLE);
 
-                openWifi();
+            findViewById(R.id.wifiLogo).setOnClickListener(new View.OnClickListener() {
 
-            }
-        });
+                @Override
+                public void onClick(View v) {
 
+                    // Call openWifi method defined below
+                    openWifi();
+
+                }
+            });
+        }
+
+        // If WiFi is turned on but is not connected to Network...press to open Available Networks
+
+        if (wifi.setWifiEnabled(true) && (userWifi.getState()) == NetworkInfo.State.DISCONNECTED) {
+            TextView wifiMsg = (TextView) findViewById(R.id.wifiMsg);
+            wifiMsg.setText("WIFI ENABLED BUT NOT ONLINE \r\n Click above to open WiFi Network Availability \r\n Or click below to Continue \r\n Data charges may apply when Submitting Testimony");
+
+            findViewById(R.id.wifiLogo).setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    finish();
+                    startActivity(new Intent(Settings.ACTION_WIFI_SETTINGS));
+                    Toast.makeText(getBaseContext(), "Please connect to a hotspot",
+                            Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
+        // The option to continue with disclaimer
+
+        else {
+
+            findViewById(R.id.enterBtn).setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+
+                    enterBtn.setVisibility(View.VISIBLE);
+
+                    TextView wifiMsg = (TextView) findViewById(R.id.wifiMsg);
+                    wifiMsg.setText("This app may use your mobile data to submit Testimony.");
+
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    finish();
+                    startActivity(i);
+
+                }
+            });
+        }
     }
+
+    // Open wifi method called from above
 
     private void openWifi() {
 
-        Intent intent = new Intent(Settings.ACTION_WIFI_SETTINGS);
-        finish();
-        startActivity(intent);
+        WifiManager wifi = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+        wifi.setWifiEnabled(true);
 
     }
-
 }
