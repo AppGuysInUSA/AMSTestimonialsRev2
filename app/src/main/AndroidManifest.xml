@@ -26,10 +26,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.SPLASH" />
-<<<<<<< HEAD
+
                 <action android:name="android.intent.action.MAIN" />
-=======
->>>>>>> origin/master
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
