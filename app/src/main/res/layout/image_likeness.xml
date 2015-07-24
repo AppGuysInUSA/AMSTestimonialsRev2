@@ -15,7 +15,6 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/topBluelBar"
         android:background="#006B87"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -66,6 +65,41 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:onClick="onClick" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blackcornerright"
+        android:layout_gravity="right|bottom"
+        android:id="@+id/blackcornerright"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="false" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/blackcorner"
+        android:layout_gravity="left|bottom"
+        android:id="@+id/blackcornerleft"
+        android:layout_alignParentBottom="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/graycornerright"
+        android:layout_gravity="right|top"
+        android:id="@+id/graycornerright"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/graycornerleft"
+        android:layout_gravity="left|top"
+        android:id="@+id/graycornerleft"
+        android:layout_alignParentTop="true" />
 
 <!--
     <TextView
