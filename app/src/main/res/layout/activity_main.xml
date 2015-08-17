@@ -263,6 +263,15 @@
         android:id="@+id/graycornerleft"
         android:layout_alignParentTop="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/messageText"
+        android:layout_above="@+id/btnCapturePicture"
+        android:layout_alignEnd="@+id/testimonyInput"
+        android:layout_alignStart="@+id/btnCapturePicture"
+        android:textColor="#000000" />
+
     <!--
         <TextView
             android:layout_width="wrap_content"

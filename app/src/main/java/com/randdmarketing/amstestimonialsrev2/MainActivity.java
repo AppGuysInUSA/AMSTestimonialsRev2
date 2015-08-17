@@ -131,12 +131,15 @@ public class MainActivity extends Activity implements OnClickListener{
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    new UploadToServer();
+
                     ///////////////// End file capture ////////////////////////
                     Intent restartIntent = getIntent();
                     finish();
                     startActivity(restartIntent);
                 }
             }
+
         });
 
         CheckBox cb = (CheckBox) findViewById(R.id.amsCheckBox);
