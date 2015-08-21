@@ -108,7 +108,7 @@ public class MainActivity extends Activity implements OnClickListener{
                     FileOutputStream fOut = null;
                     //Since you are creating a subdirectory, you need to make sure it's there first
 
-                    File directory = new File( Environment.getExternalStorageDirectory()+ "/AMS Testimonial/", nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString());
+                    File directory = new File( Environment.getExternalStorageDirectory()+ "/AMS Testimonial/", nameInput.getText().toString());
                     if (!directory.exists()) {
                         directory.mkdirs();
                     }
@@ -153,8 +153,6 @@ public class MainActivity extends Activity implements OnClickListener{
                     btnSubmitFile.setVisibility(View.INVISIBLE);
                     tosAgreement.setVisibility(View.VISIBLE);
                 }
-
-
             }
         });
 
@@ -168,7 +166,6 @@ public class MainActivity extends Activity implements OnClickListener{
                 // capture picture
                 captureImage();
             }
-
         });
 
         /**

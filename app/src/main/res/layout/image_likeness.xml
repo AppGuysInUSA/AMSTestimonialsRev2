@@ -3,19 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFFFFF"
+    android:background="@drawable/layout_bg_black"
     tools:context=".ImageLikeness">
 
     <TextView
         android:id="@+id/darkBlueBarTop"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_alignBottom="@+id/amsvansLogo"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="#006B87"
+        android:background="@drawable/layout_bg_blue_top_round"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageView
@@ -65,41 +64,6 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="10dp"
         android:onClick="onClick" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blackcornerright"
-        android:layout_gravity="right|bottom"
-        android:id="@+id/blackcornerright"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="false" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blackcorner"
-        android:layout_gravity="left|bottom"
-        android:id="@+id/blackcornerleft"
-        android:layout_alignParentBottom="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/graycornerright"
-        android:layout_gravity="right|top"
-        android:id="@+id/graycornerright"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/graycornerleft"
-        android:layout_gravity="left|top"
-        android:id="@+id/graycornerleft"
-        android:layout_alignParentTop="true" />
 
 <!--
     <TextView

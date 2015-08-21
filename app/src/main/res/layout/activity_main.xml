@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+    android:background="@drawable/layout_bg_black"
     tools:context=".MainActivity">
 
     <TextView
@@ -12,9 +12,10 @@
         android:layout_below="@+id/darkBlueBarTop"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="15dp"
-        android:text="Name:"
+        android:text="NAME:"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#006B87" />
+        android:textColor="#006B87"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/amsEmail"
@@ -23,9 +24,10 @@
         android:layout_below="@+id/amsName"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:text="Email:"
+        android:text="EMAIL:"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#006B87" />
+        android:textColor="#006B87"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/amsTestimony"
@@ -35,27 +37,11 @@
         android:layout_below="@+id/amsEmail"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="10dp"
-        android:text="Testimony:"
+        android:text="TESTIMONY:"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#006B87" />
+        android:textColor="#006B87"
+        android:textSize="20dp" />
 
-    <!-- Capture picture button -->
-    <Button
-        android:id="@+id/btnCapturePicture"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_above="@+id/amsCheckBox"
-        android:layout_marginBottom="19dp"
-        android:layout_marginLeft="20dp"
-        android:background="@drawable/photo" />
-
-    <Button
-        android:id="@+id/btnRecordVideo"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignTop="@+id/btnCapturePicture"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/videocam" />
 
     <CheckBox
         android:id="@+id/amsCheckBox"
@@ -65,106 +51,55 @@
         android:layout_marginLeft="90dp" />
 
     <TextView
+        android:id="@+id/releaseText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_alignBottom="@+id/amsCheckBox"
+        android:layout_marginBottom="7sp"
+        android:layout_toEndOf="@+id/amsCheckBox"
+        android:onClick="onClick"
         android:text="@string/Release_Agreement"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#006B87"
         android:textSize="12dp"
-        android:textStyle="normal"
-        android:id="@+id/releaseText"
-        android:layout_alignBottom="@+id/amsCheckBox"
-        android:layout_toEndOf="@+id/amsCheckBox"
-        android:layout_marginBottom="7sp"
-        android:onClick="onClick"/>
-
-
-    <Button
-        android:id="@+id/btnSubmitFile"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/btnRecordVideo"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="20dp"
-        android:visibility="invisible"
-        android:background="@drawable/testimonial"
-        android:onClick="submitBtnClicked" />
+        android:textStyle="normal" />
 
     <EditText
         android:id="@+id/nameInput"
         android:layout_width="230sp"
         android:layout_height="38sp"
-        android:layout_below="@+id/darkBlueBarTop"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/darkBlueBarTop"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
         android:imeOptions="actionNext"
+        android:inputType="text|textCapSentences"
         android:singleLine="true"
-        android:inputType="text|textCapSentences" />
+        android:textColor="#000000" />
 
     <EditText
         android:id="@+id/emailInput"
         android:layout_width="230sp"
         android:layout_height="38sp"
-        android:layout_below="@+id/nameInput"
         android:layout_alignParentEnd="true"
+        android:layout_below="@+id/nameInput"
         android:layout_marginRight="20dp"
         android:layout_marginTop="0dp"
         android:imeOptions="actionNext"
+        android:inputType="textEmailAddress"
         android:singleLine="true"
-        android:inputType="textEmailAddress" />
-
-    <TextView
-        android:id="@+id/takephotoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btnCapturePicture"
-        android:layout_below="@+id/btnRecordVideo"
-        android:layout_marginTop="2dp"
-        android:text="TAKE PHOTO"
-        android:textAlignment="gravity"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#A5C62F"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/takevideoText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btnRecordVideo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="2dp"
-        android:text="TAKE VIDEO"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#006B87"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/submitText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/btnSubmitFile"
-        android:layout_alignStart="@+id/btnSubmitFile"
-        android:layout_below="@+id/btnSubmitFile"
-        android:layout_marginTop="2dp"
-        android:gravity="center"
-        android:text="SUBMIT"
-        android:textAlignment="center"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#A5C62F"
-        android:textStyle="bold" />
+        android:textColor="#000000" />
 
     <TextView
         android:id="@+id/darkBlueBarTop"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_alignBottom="@+id/amsvansLogo"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentEnd="false"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:background="#006B87"
+        android:background="@drawable/layout_bg_blue_top_round"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ImageView
@@ -177,91 +112,157 @@
         android:background="@drawable/ams_white_transparent" />
 
     <EditText
+        android:id="@+id/testimonyInput"
         android:layout_width="900dp"
         android:layout_height="38sp"
-        android:id="@+id/testimonyInput"
-        android:layout_below="@+id/amsTestimony"
-        android:inputType="text|textCapSentences"
+        android:layout_alignEnd="@+id/emailInput"
         android:layout_alignStart="@+id/amsName"
+        android:layout_below="@+id/amsTestimony"
         android:imeOptions="actionDone"
+        android:inputType="text|textCapSentences"
         android:singleLine="true"
-        android:layout_alignEnd="@+id/emailInput" />
-
-    <!-- To display picture taken -->
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imgPreview"
-        android:visibility="invisible"
-        android:layout_below="@+id/testimonyInput"
-        android:layout_alignParentEnd="false"
-        android:layout_marginTop="50sp"
-        android:layout_alignParentStart="false"
-        android:layout_marginLeft="40sp" />
-
-    <!-- To preview video recorded -->
-    <VideoView
-        android:layout_width="wrap_content"
-        android:layout_height="115sp"
-        android:id="@+id/videoPreview"
-        android:visibility="invisible"
-        android:layout_below="@+id/testimonyInput"
-        android:layout_toEndOf="@+id/btnRecordVideo"
-        android:layout_alignParentEnd="false"
-        android:layout_marginTop="30sp"
-        android:layout_marginRight="40sp" />
+        android:textColor="#000000" />
 
     <TextView
+        android:id="@+id/tosAgreement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="@string/AgreeToTOS"
-        android:textColor="#ff870000"
-        android:textSize="12sp"
-        android:textStyle="normal"
-        android:id="@+id/tosAgreement"
-        android:onClick="onClick"
         android:layout_below="@+id/testimonyInput"
         android:layout_centerHorizontal="true"
-        android:editable="false" />
+        android:editable="false"
+        android:onClick="onClick"
+        android:text="@string/AgreeToTOS"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="#ff870000"
+        android:textSize="12sp"
+        android:textStyle="normal" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blackcornerright"
-        android:layout_gravity="right|bottom"
-        android:id="@+id/blackcornerright"
-        android:layout_alignParentTop="false"
-        android:layout_alignParentLeft="false"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true" />
+    <TableLayout
+        android:layout_width="325dp"
+        android:layout_height="100dp"
+        android:id="@+id/previewTable"
+        android:elevation="10dp"
+        android:gravity="fill_horizontal|center_vertical"
+        android:layout_below="@+id/tosAgreement"
+        android:layout_alignStart="@+id/btnTable"
+        android:layout_marginTop="60dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/blackcorner"
-        android:id="@+id/blackcornerleft"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp" />
+        <TableRow android:padding="10dp">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/graycornerright"
-        android:layout_gravity="right|top"
-        android:id="@+id/graycornerright"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="false" />
+            <!-- To display picture taken -->
+            <ImageView
+                android:id="@+id/imgPreview"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
+                android:visibility="invisible"
+                android:gravity="center"
+                android:layout_weight="1" />
 
-    <ImageView
-        android:layout_width="wrap_content"
+            <!-- To preview video recorded -->
+            <VideoView
+                android:id="@+id/videoPreview"
+                android:layout_width="125dp"
+                android:layout_height="75dp"
+                android:visibility="invisible"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_column="5" />
+
+        </TableRow>
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/graycornerleft"
-        android:layout_gravity="left|top"
-        android:id="@+id/graycornerleft"
-        android:layout_alignParentTop="true" />
+        android:id="@+id/btnTable"
+        android:layout_above="@+id/amsCheckBox"
+        android:layout_centerHorizontal="true">
+
+        <TableRow
+            android:id="@+id/tableRowHeader"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnCapturePicture"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:gravity="center"
+                android:background="@drawable/photo"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="35dp"/>
+
+            <Button
+                android:id="@+id/btnRecordVideo"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:gravity="center"
+                android:background="@drawable/videocam"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:layout_width="35dp"/>
+
+            <Button
+                android:id="@+id/btnSubmitFile"
+                android:layout_width="85dp"
+                android:layout_height="85dp"
+                android:background="@drawable/testimonial"
+                android:onClick="submitBtnClicked"
+                android:gravity="center"
+                android:visibility="invisible"
+                android:layout_gravity="center" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/takephotoText"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TAKE PHOTO"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#A5C62F"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"/>
+
+            <TextView
+                android:id="@+id/takevideoText"
+                android:layout_width="75dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="TAKE VIDEO"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#006B87"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="35dp"/>
+
+            <TextView
+                android:id="@+id/submitText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="SUBMIT"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#A5C62F"
+                android:textStyle="bold" />
+
+        </TableRow>
+
+    </TableLayout>
 
     <!--
         <TextView
