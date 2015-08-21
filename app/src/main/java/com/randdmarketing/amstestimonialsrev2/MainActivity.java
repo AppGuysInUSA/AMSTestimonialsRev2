@@ -38,7 +38,6 @@ import android.view.View.OnClickListener;
 
 public class MainActivity extends Activity implements OnClickListener{
 
-
     //Capture User Inputs
     EditText nameInput;
     EditText emailInput;
