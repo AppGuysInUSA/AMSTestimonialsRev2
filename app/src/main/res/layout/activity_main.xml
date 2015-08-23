@@ -69,6 +69,7 @@
         android:layout_width="230sp"
         android:layout_height="38sp"
         android:layout_alignParentEnd="true"
+        android:background="@color/background_material_light"
         android:layout_below="@+id/darkBlueBarTop"
         android:layout_marginRight="20dp"
         android:layout_marginTop="5dp"
@@ -82,6 +83,7 @@
         android:layout_width="230sp"
         android:layout_height="38sp"
         android:layout_alignParentEnd="true"
+        android:background="@color/background_material_light"
         android:layout_below="@+id/nameInput"
         android:layout_marginRight="20dp"
         android:layout_marginTop="0dp"
@@ -115,6 +117,7 @@
         android:id="@+id/testimonyInput"
         android:layout_width="900dp"
         android:layout_height="38sp"
+        android:background="@color/background_material_light"
         android:layout_alignEnd="@+id/emailInput"
         android:layout_alignStart="@+id/amsName"
         android:layout_below="@+id/amsTestimony"
@@ -264,14 +267,13 @@
 
     </TableLayout>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/messageText"
-        android:layout_above="@+id/btnCapturePicture"
-        android:layout_alignEnd="@+id/testimonyInput"
-        android:layout_alignStart="@+id/btnCapturePicture"
-        android:textColor="#000000" />
+        android:layout_above="@+id/btnTable"
+        android:layout_alignStart="@+id/btnTable"
+        android:layout_alignEnd="@+id/testimonyInput" />
 
     <!--
         <TextView

@@ -8,9 +8,10 @@ import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.text.Editable;
@@ -34,7 +35,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 import android.view.View.OnClickListener;
-
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import android.app.ProgressDialog;
 
 public class MainActivity extends Activity implements OnClickListener{
 
@@ -43,6 +51,21 @@ public class MainActivity extends Activity implements OnClickListener{
     EditText emailInput;
     EditText testimonyInput;
 
+    /**
+     * ***************************** Start Server Upload *******************
+     * **/
+    TextView messageText;
+    int serverResponseCode = 0;
+    ProgressDialog dialog = null;
+    String upLoadServerUri = null;
+
+    /**********  File Path *************/
+    final String uploadFilePath = Environment.getExternalStorageDirectory()+ "/AMS Testimonial/";
+    String uploadFileName = "";
+
+    /**
+     * **************************** End Server Upload ******************
+     * **/
 
     // Activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
@@ -71,12 +94,12 @@ public class MainActivity extends Activity implements OnClickListener{
         btnRecordVideo = (Button) findViewById(R.id.btnRecordVideo);
         btnSubmitFile = (Button) findViewById(R.id.btnSubmitFile);
 
+
         //////////////// Create folder under internal root to store files ///////////
         File storagePath = new File(Environment.getExternalStorageDirectory()+ "/AMS Testimonial");
         if (!storagePath.exists()) {
             storagePath.mkdirs();
         }
-
 
         //////////////   Start of User info capture  /////////////////////
         nameInput = (EditText) findViewById(R.id.nameInput);
@@ -84,13 +107,22 @@ public class MainActivity extends Activity implements OnClickListener{
         testimonyInput = (EditText) findViewById(R.id.testimonyInput);
         //////////////   End of User info capture  /////////////////////
 
+        /**
+         * **************************** Start Server Upload *******************
+         * **/
+        messageText  = (TextView)findViewById(R.id.messageText);
+
+        /************* Php script path ****************/
+        upLoadServerUri = "http://www.appguysinusa.com/UploadToServer.php";
+
+        /**
+         * **************************** End Server Upload *******************
+         * **/
 
         findViewById(R.id.btnSubmitFile).setOnClickListener(new OnClickListener() {
 
-
             @Override
             public void onClick(View arg0) {
-
                 final String name = nameInput.getText().toString();
                 if (!isValidName(name)) {
                     nameInput.setError("Name Must Be Entered!");
@@ -107,8 +139,7 @@ public class MainActivity extends Activity implements OnClickListener{
                     String userFileData = nameInput.getText().toString() + "\r\n" + emailInput.getText().toString() + "\r\n" + testimonyInput.getText().toString();
                     FileOutputStream fOut = null;
                     //Since you are creating a subdirectory, you need to make sure it's there first
-
-                    File directory = new File( Environment.getExternalStorageDirectory()+ "/AMS Testimonial/", nameInput.getText().toString());
+                    final File directory = new File( Environment.getExternalStorageDirectory()+ "/AMS Testimonial/");
                     if (!directory.exists()) {
                         directory.mkdirs();
                     }
@@ -122,24 +153,61 @@ public class MainActivity extends Activity implements OnClickListener{
                     OutputStreamWriter osw = new OutputStreamWriter(fOut);
                     try {
                         osw.write(userFileData);
-
                         osw.flush();
                         osw.close();
-
                         Toast.makeText(getBaseContext(), "Thank you...Testimony saved successfully!",
                                 Toast.LENGTH_LONG).show();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    new UploadToServer();
+                    /**
+                     * **************************** Start Server Upload *******************
+                     * **/
+                    dialog = ProgressDialog.show(MainActivity.this, "", "Please wait while your files are being uploaded. The app will close when upload is complete.", true);
+                    new Thread(new Runnable() {
+                        public void run() {
+                            String path = Environment.getExternalStorageDirectory().toString()+"/AMS Testimonial/";
+                            Log.d("Files", "Path: " + path);
+                            File f = new File(path);
+                            File file[] = f.listFiles();
+                            Log.d("Files", "Size: "+ file.length);
+                            for (int i=0; i < file.length; i++)
+                            {
+                                Log.d("Files", "FileName:" + file[i].getName());
+                                uploadFileName = file[i].getName();
+                                uploadFile(uploadFilePath + "" + uploadFileName);
+                            }
+                        }
+                    }).start();
 
+                    /**
+                     ***************************** End Server Upload *******************
+                     ***/
+
+                    //// This section deletes files after they have been uploaded, it then closes app //
+                    new Timer().schedule(new TimerTask() {
+                        @Override
+                        public void run() {
+                            File dir = new File(Environment.getExternalStorageDirectory()+"/AMS Testimonial/");
+                            if (dir.isDirectory())
+                            {
+                                String[] children = dir.list();
+                                for (int i = 0; i < children.length; i++)
+                                {
+                                    new File(dir, children[i]).delete();
+                                }
+                            }
+
+                            dialog.dismiss();
+                            finish();
+                        }
+                    }, 20000);
                     ///////////////// End file capture ////////////////////////
-                    Intent restartIntent = getIntent();
-                    finish();
-                    startActivity(restartIntent);
+                    //Intent restartIntent = getIntent();
+                    //finish();
+                    //startActivity(restartIntent);
                 }
             }
-
         });
 
         CheckBox cb = (CheckBox) findViewById(R.id.amsCheckBox);
@@ -192,6 +260,148 @@ public class MainActivity extends Activity implements OnClickListener{
             finish();
         }
     }
+    /**
+     ***************************** Start Server Upload *******************
+     ***/
+    public int uploadFile(String sourceFileUri) {
+
+        final String fileName = sourceFileUri;
+        HttpURLConnection conn = null;
+        DataOutputStream dos = null;
+        String lineEnd = "\r\n";
+        String twoHyphens = "--";
+        String boundary = "*****";
+        int bytesRead, bytesAvailable, bufferSize;
+        byte[] buffer;
+        int maxBufferSize = 1 * 1024 * 1024;
+        File sourceFile = new File(sourceFileUri);
+
+        if (!sourceFile.isFile()) {
+            dialog.dismiss();
+            Log.e("uploadFile", "Source File not exist :"
+                    +uploadFilePath + "" + uploadFileName);
+            runOnUiThread(new Runnable() {
+                public void run() {
+                    messageText.setText("Source File not exist :"
+                            +uploadFilePath + "" + uploadFileName);
+                }
+            });
+            return 0;
+        }
+        else
+        {
+            try {
+
+                // open a URL connection to the Servlet
+                FileInputStream fileInputStream = new FileInputStream(sourceFile);
+                URL url = new URL(upLoadServerUri);
+
+                // Open a HTTP  connection to  the URL
+                conn = (HttpURLConnection) url.openConnection();
+                conn.setDoInput(true); // Allow Inputs
+                conn.setDoOutput(true); // Allow Outputs
+                conn.setUseCaches(false); // Don't use a Cached Copy
+                conn.setRequestMethod("POST");
+                conn.setRequestProperty("Connection", "Keep-Alive");
+                conn.setRequestProperty("ENCTYPE", "multipart/form-data");
+                conn.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + boundary);
+                conn.setRequestProperty("uploaded_file", fileName);
+
+                dos = new DataOutputStream(conn.getOutputStream());
+                // Send File Name
+                dos.writeBytes(twoHyphens + boundary + lineEnd);
+                dos.writeBytes("Content-Disposition: form-data; name=\"uploaded_file\";filename=\"" + fileName + "\"" + lineEnd);
+
+                dos.writeBytes(lineEnd);
+
+                // create a buffer of  maximum size
+                bytesAvailable = fileInputStream.available();
+                bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                buffer = new byte[bufferSize];
+
+                // read file and write it into form...
+                bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+
+                while (bytesRead > 0) {
+
+                    dos.write(buffer, 0, bufferSize);
+                    bytesAvailable = fileInputStream.available();
+                    bufferSize = Math.min(bytesAvailable, maxBufferSize);
+                    bytesRead = fileInputStream.read(buffer, 0, bufferSize);
+                }
+
+                // send multipart form data necessary after file data...
+                dos.writeBytes(lineEnd);
+                dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
+
+                // Responses from the server (code and message)
+                serverResponseCode = conn.getResponseCode();
+                String serverResponseMessage = conn.getResponseMessage();
+
+                Log.i("uploadFile", "HTTP Response is : "
+                        + serverResponseMessage + ": " + serverResponseCode);
+
+                if (serverResponseCode == 200) {
+
+                    // Read response
+                    final StringBuilder responseSB = new StringBuilder();
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+                    String line;
+                    while ((line = br.readLine()) != null)
+                        responseSB.append(line);
+                    // Close streams
+                    br.close();
+                    runOnUiThread(new Runnable() {
+                        public void run() {
+                            Log.i("uploadFile", "Path is : " + fileName);
+                            Log.i("Output", responseSB.toString());
+                        }
+                    });
+                }
+
+                //close the streams //
+                fileInputStream.close();
+                dos.flush();
+                dos.close();
+
+            } catch (MalformedURLException ex) {
+
+                dialog.dismiss();
+                ex.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        messageText.setText("MalformedURLException Exception : check script url.");
+                        Toast.makeText(MainActivity.this, "MalformedURLException",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+                Log.e("Upload file to server", "error: " + ex.getMessage(), ex);
+            } catch (Exception e) {
+
+                dialog.dismiss();
+                e.printStackTrace();
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        messageText.setText("Got Exception : see logcat ");
+                        Toast.makeText(MainActivity.this, "Got Exception : see logcat ",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+                Log.e("Upload Exception", "Exception : "
+                        + e.getMessage(), e);
+            }
+
+            return serverResponseCode;
+
+        } // End else block
+
+    }
+    /**
+     ***************************** End Server Upload *******************
+     ***/
+
 
     /**
      * Checking device has camera hardware or not
@@ -338,7 +548,7 @@ public class MainActivity extends Activity implements OnClickListener{
             videoPreview.setVisibility(View.VISIBLE);
             videoPreview.setVideoPath(fileUri.getPath());
             // start playing
-            videoPreview.start();
+            //videoPreview.start();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -379,7 +589,7 @@ public class MainActivity extends Activity implements OnClickListener{
 
         // External sdcard location
         File mediaStorageDir = new File(
-                Environment.getExternalStorageDirectory()+ "/AMS Testimonial/" + nameInput.getText().toString());
+                Environment.getExternalStorageDirectory()+ "/AMS Testimonial/");
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists()) {
